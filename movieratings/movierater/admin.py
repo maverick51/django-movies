@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Rater
-from .models import Movies
-from .models import Ratings
+from .models import Movie
+from .models import Rating
 
 # Register your models here.
 
@@ -11,17 +11,17 @@ from .models import Ratings
 
 
 class RaterAdmin(admin.ModelAdmin):
-    list_display = ['age', 'gender', 'occupation', 'zip_code']
+    list_display = ['id', 'age', 'gender', 'occupation', 'zip_code']
 
 
-class MoviesAdmin(admin.ModelAdmin):
-    list_display = ['movie_title', 'genres']
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ['id', 'movie_title', 'genres']
 
 
-class RatingsAdmin(admin.ModelAdmin):
-    list_display = ['rater_ob', 'movie_ob', 'rating', 'time_stamp']
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ['id', 'rater', 'movie', 'rating', 'time_stamp']
 
 
 admin.site.register(Rater, RaterAdmin)
-admin.site.register(Movies, MoviesAdmin)
-admin.site.register(Ratings, RatingsAdmin)
+admin.site.register(Movie, MovieAdmin)
+admin.site.register(Rating, RatingAdmin)
