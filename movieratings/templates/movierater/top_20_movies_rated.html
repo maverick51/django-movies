@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 20 Movies Rated</title>
+</head>
+<body>
+    <h1>Here is the Top 20 Movies Rated</h1>
+        {% for movie in movies %}
+        <li> <a href="{% url 'each_individual_movie' movie.pk %}">{{ movie.movie_title }}</a> <br>
+            Average Rating: {{ movie.avg_rating }}</li><br>
+        {% endfor %}
+
+</body>
+</html>

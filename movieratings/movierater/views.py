@@ -4,25 +4,20 @@ from .models import Rater, Movie, Rating
 
 
 # Create your views here.
-def each_individual_movie(request):
-    movies = Movie.objects.all().order_by('-id')
-    page_load = datetime.datetime.now()
+def each_individual_movie(request, movie_id):
+    movie = Movie.objects.get(pk=movie_id)
 
     return render(request, 'movierater/each_individual_movie.html',
-                  {'movies': movies, 'page_load': page_load})
+                  {'movie': movie})
 
 
-def each_individual_user(request):
-    user = Rater.objects.all().order_by('-id')
-    page_load = datetime.datetime.now()
+def each_individual_user(request, rater_id):
+    user = Rater.objects.get(pk=rater_id)
 
     return render(request, 'movierater/each_individual_user.html',
-                  {'user': user, 'page_load': page_load})
+                  {'user': user})
 
 
 def top_20_movies_rated(request):
-    rating = Rating.objects.all().order_by('-time_stamp')
-    page_load = datetime.datetime.now()
-
-    return render(request, 'movierater/top_20_movies_rated.html',
-                  {'rating': rating, 'page_load': page_load})
+    movies = Movie.objects.all()[:20]
+    return render(request, 'movierater/top_20_movies_rated.html', {'movies': movies})

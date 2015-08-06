@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Each Individual User</title>
+</head>
+<body>
+    <h1>Here is Each Individual User</h1>
+        <p>Rater's Age: {{ user.age }}</p>
+        <p>Rater's Gender: {{ user.gender }}</p>
+        <p>Rater's Occupation: {{ user.occupation }}</p>
+        <p>Rater's Zip Code: {{ user.zip_code }}</p>
+        {% for movie in user.rating_set.all %}
+            <li><a href="{% url 'each_individual_movie' movie.movie.pk %}"> Movie = {{movie.movie.id}}  Rating = {{ movie.rating }}</a></li>
+        {% endfor %}
+
+</body>
+</html>
